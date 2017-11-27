@@ -4,66 +4,24 @@ import { Todo, TodoInputType } from "./types/Todo";
 import { fakeDatabase } from "../data/FakeDatabase";
 import { verifyToken, SECRET, validateLogin } from "../libs/crypto";
 
-// // Import mutations
+// Import mutations
 import addTodo from './mutations/todo';
-import {userLogin, userRegister, } from "./mutations/auth";
+import { userLogin, userRegister } from "./mutations/auth";
+
+// Import Queries
+import me from './queries/me';
+import { user, users } from './queries/users';
+import { todo, todos } from './queries/todos';
 
 export const ViewerType = new GraphQLObjectType({
     name: 'Viewer',
     description: 'Viewer',
     fields: () => ({
-        me: {
-            type: User,
-            description: 'Get Current User',
-            resolve: (source) => {
-                return validateLogin(source, (token, email) => {
-                    return fakeDatabase.getUserByEmail(email);
-                })
-            }
-        },
-        user: {
-            type: User,
-            description: "Get a specific user",
-            args: {
-                id: { type: new GraphQLNonNull(GraphQLString) }
-            },
-            resolve: function (source, {id}) {
-                return validateLogin(source, () => {
-                    return fakeDatabase.getUserById(id);
-                })
-            }
-        },
-        users: {
-            type: new GraphQLList(User),
-            description: 'Get all users',
-            resolve: (source) => {
-                return validateLogin(source, () => {
-                    return fakeDatabase.getUsers(source.email);
-                })
-            }
-        },
-        todo: {
-            type: Todo,
-            description: "Get details of a single todo",
-            args: {
-                id: { type: new GraphQLNonNull(GraphQLString) }
-            },
-            resolve: function (source, {id}) {
-                return validateLogin(source, () => {
-                    return fakeDatabase.getTodoById(id);
-                })
-            }
-        },
-        todos: {
-            type: new GraphQLList(Todo),
-            description: "Get a list of recent todos",
-            args: {},
-            resolve: function (source) {
-                return validateLogin(source, (token, email) => {
-                    return fakeDatabase.getTodos();
-                })
-            }
-        }
+        ...me,
+        ...user,
+        ...users,
+        ...todo,
+        ...todos
     })
 });
 
