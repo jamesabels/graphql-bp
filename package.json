@@ -1,0 +1,31 @@
+{
+  "name": "graphql-bp",
+  "version": "0.0.0",
+  "description": "A boilerpalte for GraphQL apis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist/ && node dist/index.js",
+    "serve": "babel src --out-dir dist/ && node dist/serve.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "express-session": "^1.15.6",
+    "graphql": "^0.11.7",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
