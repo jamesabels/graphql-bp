@@ -2,8 +2,6 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import schema from './graphql/schema';
 
-require('./libs/auth');
-
 const app = express();
 const PORT = 8080;
 
