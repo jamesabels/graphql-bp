@@ -26,3 +26,13 @@ export const TodoInputType = new GraphQLInputObjectType({
         user: { type: new GraphQLNonNull(GraphQLString) }
     }
 });
+
+export const TodoUpdateType = new GraphQLInputObjectType({
+    name: 'TodoUpdate',
+    fields: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        content: { type: new GraphQLNonNull(GraphQLString) },
+        user: { type: new GraphQLNonNull(GraphQLString) }
+    }
+});

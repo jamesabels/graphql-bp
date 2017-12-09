@@ -8,7 +8,7 @@
     "build": "babel src --out-dir dist/ && node dist/index.js",
     "serve": "babel src --out-dir dist/ && node dist/serve.js"
   },
-  "author": "",
+  "author": "James Abels <jamesrabels@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^1.0.3",
@@ -27,5 +27,6 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1"
-  }
+  },
+  "repository": "https://github.com/jamesabels/graphql-bp.git"
 }

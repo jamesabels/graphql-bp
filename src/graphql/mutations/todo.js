@@ -1,8 +1,8 @@
 import { GraphQLNonNull, GraphQLInt } from "graphql";
-import { Todo, TodoInputType } from "../types/Todo";
+import { Todo, TodoInputType, TodoUpdateType } from "../types/Todo";
 import { fakeDatabase } from "../../data/FakeDatabase";
 
-export default {
+export const addTodo = {
     addTodo: {
         type: Todo,
         description: 'This creates a new todo.',
@@ -11,6 +11,19 @@ export default {
         },
         resolve: (parent, {todo}) => {
             return fakeDatabase.addNewTodo(todo);
+        }
+    }
+}
+
+export const updateTodo = {
+    updateTodo: {
+        type: Todo,
+        description: 'This updates a todo.',
+        args: {
+           todo: { type: TodoUpdateType }
+        },
+        resolve: (parent, {todo}) => {
+            return fakeDatabase.updateTodo(todo);
         }
     }
 }

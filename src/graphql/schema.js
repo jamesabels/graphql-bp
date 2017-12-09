@@ -5,7 +5,7 @@ import { fakeDatabase } from "../data/FakeDatabase";
 import { verifyToken, SECRET, validateLogin } from "../libs/crypto";
 
 // // Import mutations
-import addTodo from './mutations/todo';
+import { addTodo, updateTodo } from './mutations/todo';
 import {userLogin, userRegister, } from "./mutations/auth";
 
 export const ViewerType = new GraphQLObjectType({
@@ -88,6 +88,7 @@ const Schema = new GraphQLSchema({
         name: 'RootMutation',
         fields: () => ({
             ...addTodo,
+            ...updateTodo,
             ...userLogin,
             ...userRegister
         })

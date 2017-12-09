@@ -74,6 +74,13 @@ class FakeDatabase{
         updateUser (user) {
             let i = this.users.indexOf(user);
             this.users.splice(i, 1);
+            return user;
+        }
+
+        updateTodo (todo) {
+            let i = this.todos.indexOf(todo);
+            this.todos.splice(i, 1);
+            return todo;
         }
     }
     
