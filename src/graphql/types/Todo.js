@@ -36,3 +36,10 @@ export const TodoUpdateType = new GraphQLInputObjectType({
         user: { type: new GraphQLNonNull(GraphQLString) }
     }
 });
+
+export const TodoRemoveType = new GraphQLInputObjectType({
+    name: 'TodoRemove',
+    fields: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+    }
+});

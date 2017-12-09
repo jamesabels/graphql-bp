@@ -1,9 +1,9 @@
 import { SECRET, generateHash, generateToken } from '../../libs/crypto';
-import {User, UserAuthType, UserLoginType, UserRegisterType} from "../types/User";
+import { User, UserAuthType, UserLoginType, UserRegisterType, UserRemoveType } from "../types/User";
 import { fakeDatabase } from "../../data/FakeDatabase";
 
 export const userLogin = {
-    login: {
+    userLogin: {
         type: User,
         description: 'Authenticate a user.',
         args: {
@@ -16,7 +16,7 @@ export const userLogin = {
 };
 
 export const userRegister = {
-    register: {
+    userRegister: {
         type: User,
         description: 'Register a new user.',
         args: {
@@ -27,6 +27,19 @@ export const userRegister = {
             user.password = generateHash(user.password, 12);
             user.token = generateToken('1y', { email: user.email }, SECRET);
             return fakeDatabase.addNewUser(user);
+        }
+    }
+};
+
+export const userRemove = {
+    userRemove: {
+        type: User,
+        description: 'Remove and existing user.',
+        args: {
+            user: { type: UserRemoveType }
+        },
+        resolve: (parent, {user}) => {
+            return fakeDatabase.removeUser(user);
         }
     }
 };

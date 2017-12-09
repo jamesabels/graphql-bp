@@ -23,7 +23,7 @@ export const User = new GraphQLObjectType({
  });
 
 export const UserRegisterType = new GraphQLInputObjectType({
-    name: 'UserRegisterInput',
+    name: 'UserRegister',
     fields: {
         username: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
@@ -32,9 +32,16 @@ export const UserRegisterType = new GraphQLInputObjectType({
 });
 
 export const UserLoginType = new GraphQLInputObjectType({
-    name: 'UserLoginInput',
+    name: 'UserLogin',
     fields: {
         email: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) }
+    }
+});
+
+export const UserRemoveType = new GraphQLInputObjectType({
+    name: 'UserRemove',
+    fields: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
     }
 });
